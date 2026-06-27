@@ -2,10 +2,12 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { supabase } from '../supabaseClient'
 
-enum AuthType {
-	Login = 'login',
-	SignUp = 'signup'
-}
+const AuthType = {
+	Login: 'login',
+	SignUp: 'signup'
+} as const
+
+type AuthType = (typeof AuthType)[keyof typeof AuthType]
 
 interface AuthFormData {
 	email: string
